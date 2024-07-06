@@ -28,7 +28,7 @@ class _MainPageState extends State<MainPage> {
                       height: 150,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: Colors.grey[300],
+                        color: Colors.grey,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Padding(
