@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tg_mini_app/presentation/main_page.dart';
+import 'package:telegram_web_app/telegram_web_app.dart';
+import 'package:tg_mini_app/main_page.dart';
 
-void main(){
+void main()async{
+  
+  await TelegramWebApp.instance.ready();
+
   runApp(const MyApp());
 }
 
@@ -10,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return const MaterialApp( 
       debugShowCheckedModeBanner: false,
       home: MainPage(),
     );
