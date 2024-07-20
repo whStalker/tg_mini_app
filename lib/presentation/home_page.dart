@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'package:telegram_web_app/telegram_web_app.dart';
+import 'package:tg_mini_app/presentation/project_info_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,103 +17,105 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
-      appBar: AppBar(
-        title: Text('Привет, ЮЗЕРНЕЙМ!'),
-        backgroundColor: Colors.black,
-        // Text('Список проектов ${tgUser?.first_name}'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(0),
+      backgroundColor: Colors.white,
+      body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              child: GridView.builder(
-                padding: const EdgeInsets.all(10), //Arround Grid
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  mainAxisExtent: 150,
-                ),
+            // const Padding(
+            //   padding: EdgeInsets.all(10),
+            //   child: Text(
+            //     'Привет, ЮЭЕР!',
+            //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+            //   ),
+            // ),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.only(
+                  left: 10, right: 10, top: 10, bottom: 110), //Arround Grid
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                mainAxisExtent: 200,
+              ),
 
-                itemCount: 6,
-                itemBuilder: (context, index) {
-                  return Container(
-                    padding: const EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        // Date time
-                        Row(
-                          children: [
-                            Text(DateFormat('MMMM dd, yyyy')
-                                .format(DateTime.now())),
-                          ],
-                        ),
-
-                        // Project title & icon
-                        Row(
-                          children: [
-                            Icon(Icons.computer),
-                            Text('Some title'),
-                          ],
-                        ),
-
-                        // Progress indigator
-                        Container(
-                          color: Colors.green,
-                          child: Column(
+              itemCount: 8,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProjectInfoPage(),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    elevation: 10,
+                    color: Colors.grey[200],
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          // Date time
+                          Row(
                             children: [
-                              Text('Progress'),
-                              LinearProgressIndicator(
-                                value: 0.6
-                              ),
-                              Text('60%'),
+                              Text(DateFormat('MMMM dd, yyyy')
+                                  .format(DateTime.now())),
                             ],
                           ),
-                        ),
-                      ],
+
+                          // Project title & icon
+                          const Row(
+                            children: [
+                              SizedBox(width: 10),
+                              Icon(Icons.computer),
+                              SizedBox(width: 15),
+                              Flexible(
+                                child: Text(
+                                  'Some title Some title Some title',
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  softWrap: true,
+                                  style: TextStyle(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          // Progress indigator
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text('Progress'),
+                              const SizedBox(height: 10),
+                              LinearProgressIndicator(
+                                value: 0.6,
+                                borderRadius: BorderRadius.circular(10),
+                                minHeight: 5,
+                              ),
+                              const SizedBox(height: 5),
+                              const Align(
+                                alignment: Alignment.centerRight,
+                                child: Text('60%'),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                    // Text(
-                    //     'Some test text.Some test text.Some test text.Some test text.Some test text.'),
-                  );
-                },
-              ),
-              // ListView.builder(
-              //   itemCount: 1,
-              //   itemBuilder: (context, index) {
-              //     return Padding(
-              //       padding: const EdgeInsets.all(8.0),
-              //       child: Container(
-              //         height: 150,
-              //         width: double.infinity,
-              //         decoration: BoxDecoration(
-              //           color: Colors.grey[300],
-              //           borderRadius: BorderRadius.circular(10),
-              //         ),
-              //         child: Padding(
-              //           padding: const EdgeInsets.all(10),
-              //           child: Column(
-              //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //             crossAxisAlignment: CrossAxisAlignment.start,
-              //             children: [
-              //               Text('Проект ${index + 1}'),
-              //               const Text('Описания'),
-              //               const Align(
-              //                 alignment: Alignment.centerRight,
-              //                 child: Icon(Icons.arrow_forward_ios),
-              //               ),
-              //             ],
-              //           ),
-              //         ),
-              //       ),
-              //     );
-              //   },
-              // ),
+                  ),
+                );
+              },
             ),
           ],
         ),

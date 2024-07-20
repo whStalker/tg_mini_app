@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
+  animated_toggle_switch:
+    dependency: "direct main"
+    description:
+      name: animated_toggle_switch
+      sha256: "35e3d6c74eef79c415ac3986046c35cb1ea42720afce13ec7f1a014f72dfd71c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.8.2"
   async:
     dependency: transitive
     description:
@@ -204,10 +212,10 @@ packages:
     dependency: "direct main"
     description:
       name: telegram_web_app
-      sha256: "836c146e6566c07fd5ad5b73a6f04ebea53d30b802c7f619d3d59bf21e569562"
+      sha256: "459f73e6ff2534942209708f20fd3fb898e2f4a9ba3fc64b1aaec8adde594232"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.4"
+    version: "0.1.5"
   term_glyph:
     dependency: transitive
     description:
