@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:telegram_web_app/telegram_web_app.dart';
 import 'package:tg_mini_app/presentation/project_info_page.dart';
 
 class HomePage extends StatefulWidget {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:telegram_web_app/telegram_web_app.dart';
 import 'package:tg_mini_app/presentation/add_member_page.dart';
 import 'package:tg_mini_app/presentation/tasks_list_page.dart';
 

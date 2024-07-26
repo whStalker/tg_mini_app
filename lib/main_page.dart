@@ -56,7 +56,7 @@ class _MainPageState extends State<MainPage> {
       ),
       body: _pages[_selectIndex],
       extendBody: true,
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         // color: Colors.red,
         height: 80,
         child: AnimatedNotchBottomBar(
