@@ -56,8 +56,9 @@ class _MainPageState extends State<MainPage> {
       ),
       body: _pages[_selectIndex],
       extendBody: true,
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+      bottomNavigationBar: Container(
+        // color: Colors.red,
+        height: 80,
         child: AnimatedNotchBottomBar(
           notchBottomBarController: _barController,
           onTap: (value) {
@@ -66,12 +67,8 @@ class _MainPageState extends State<MainPage> {
             });
           },
           kIconSize: 25,
-          kBottomRadius: 10,
-
-          // showTopRadius: false,
-
-          // removeMargins: true,
-          // showBlurBottomBar: true,
+          kBottomRadius: 30,
+          removeMargins: true,
 
           // notchColor: Colors.red,                  // Circle color
 

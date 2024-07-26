@@ -102,6 +102,7 @@ class _HomePageState extends State<HomePage> {
                                 value: 0.6,
                                 borderRadius: BorderRadius.circular(10),
                                 minHeight: 5,
+                                color: Colors.grey,
                               ),
                               const SizedBox(height: 5),
                               const Align(
