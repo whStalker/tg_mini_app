@@ -10,26 +10,24 @@ class ProjectInfoPage extends StatefulWidget {
   State<ProjectInfoPage> createState() => _ProjectInfoPageState();
 }
 
-int _selectedIdex = 1;
+List<int> _selectedIndex = [];
 
 final List filterText = [
   'All',
   'In progress',
   'In Review',
   'Complete',
-];
-
-final List<Color?> _colors = [
-  Colors.grey,
-  Colors.amber[200],
-  Colors.pink[200],
-  Colors.green,
+  'To Do'
 ];
 
 class _ProjectInfoPageState extends State<ProjectInfoPage> {
-  void _selectFilter(index) {
+  void _selectFilter(int index) {
     setState(() {
-      _selectedIdex = index;
+      if (_selectedIndex.contains(index)) {
+        _selectedIndex.remove(index);
+      } else {
+        _selectedIndex.add(index);
+      }
     });
   }
 
@@ -157,18 +155,12 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                 ),
               ),
               const SizedBox(height: 10),
-              // const Text(
-              //   'Tasks in progress',
-              //   style: TextStyle(
-              //     fontSize: 22,
-              //     fontWeight: FontWeight.w600,
-              //   ),
-              // ),
-              Row(
-                children: List.generate(4, (index) {
-                  return GestureDetector(
-                    onTap: () => _selectFilter(index),
-                    child: Flexible(
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(5, (index) {
+                    return GestureDetector(
+                      onTap: () => _selectFilter(index),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 5),
                         child: Container(
@@ -176,31 +168,44 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                           decoration: BoxDecoration(
                             border: Border.all(),
                             borderRadius: BorderRadius.circular(15),
-                            color: _selectedIdex == index
-                                ? Colors.grey[400]
+                            color: _selectedIndex.contains(index)
+                                ? Colors.black
                                 : Colors.transparent,
                           ),
                           child: Row(
                             children: [
                               Text(
                                 filterText[index],
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontWeight: FontWeight.w600,
+                                  color: _selectedIndex.contains(index)
+                                      ? Colors.white
+                                      : Colors.black,
                                 ),
                               ),
                               const SizedBox(width: 10),
                               CircleAvatar(
                                 radius: 14,
-                                backgroundColor: _colors[index],
-                                child: const Text('15'),
+                                backgroundColor: 
+                                _selectedIndex.contains(index)
+                                ? Colors.grey
+                                : Colors.grey,
+                                child: Text(
+                                  '15',
+                                  style: TextStyle(
+                                    color: _selectedIndex.contains(index)
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                    ),
-                  );
-                }),
+                    );
+                  }),
+                ),
               ),
               const SizedBox(height: 15),
               ListView.builder(
