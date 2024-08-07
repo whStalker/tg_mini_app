@@ -1,5 +1,6 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CreateProjectPage extends StatefulWidget {
   const CreateProjectPage({super.key});
@@ -18,6 +19,7 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
@@ -66,8 +68,8 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
                     height: 35,
                     borderWidth: 2,
                     onChanged: (i) => setState(() => positive = i),
-                    iconBuilder: (value) => Icon(
-                      value ? Icons.lock : Icons.lock_open,
+                    iconBuilder: (value) => FaIcon(
+                      value ? FontAwesomeIcons.lock : FontAwesomeIcons.lockOpen,
                       size: 20,
                     ),
 

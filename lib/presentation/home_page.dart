@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor:  Colors.white,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,9 +54,10 @@ class _HomePageState extends State<HomePage> {
                   child: Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
+                      // side: const BorderSide(),
                     ),
-                    elevation: 10,
-                    color: Colors.grey[200],
+                    elevation: 20,
+                    color: const Color.fromRGBO(219, 226, 239, 1),
                     child: Padding(
                       padding: const EdgeInsets.all(15),
                       child: Column(
@@ -65,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                           // Date time
                           Row(
                             children: [
-                              Text(DateFormat('MMMM dd, yyyy')
+                              Text(DateFormat('MMM dd, yyyy')
                                   .format(DateTime.now())),
                             ],
                           ),
@@ -101,7 +102,8 @@ class _HomePageState extends State<HomePage> {
                                 value: 0.6,
                                 borderRadius: BorderRadius.circular(10),
                                 minHeight: 5,
-                                color: Colors.grey,
+                                color: Colors.white70,
+                                backgroundColor: Colors.black12,
                               ),
                               const SizedBox(height: 5),
                               const Align(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TasksPage extends StatelessWidget {
-  const TasksPage({super.key});
+class UserTasksPage extends StatelessWidget {
+  const UserTasksPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +21,14 @@ class TasksPage extends StatelessWidget {
               child: Stack(
                 children: [
                   const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 15),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Task name
-                        Text(
+                        const Text(
                           'Task title',
                           style: TextStyle(
                             fontSize: 30,
@@ -36,7 +37,7 @@ class TasksPage extends StatelessWidget {
                         ),
 
                         // Project name
-                        Text('Project name'),
+                        const Text('Project name'),
 
                         //
                       ],
