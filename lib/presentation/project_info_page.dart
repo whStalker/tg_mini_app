@@ -186,10 +186,9 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                               const SizedBox(width: 10),
                               CircleAvatar(
                                 radius: 14,
-                                backgroundColor: 
-                                _selectedIndex.contains(index)
-                                ? Colors.grey
-                                : Colors.grey,
+                                backgroundColor: _selectedIndex.contains(index)
+                                    ? Colors.grey
+                                    : Colors.grey,
                                 child: Text(
                                   '15',
                                   style: TextStyle(
@@ -217,26 +216,30 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                     padding: const EdgeInsets.all(10),
                     child: Container(
                       height: 130,
-                      // width: MediaQuery.sizeOf(context).width,
                       decoration: BoxDecoration(
-                        color: Colors.red[300],
+                        border: Border.all(width: 1),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Stack(
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 15),
+                              horizontal: 30,
+                              vertical: 15,
+                            ),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 // Task name
                                 const Text(
                                   'Task title',
+                                  softWrap: true,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w600,
                                   ),
                                 ),
 
@@ -249,8 +252,10 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                                     ImageStack(
                                       imageList: const ['1', '2', '3', '4'],
                                       imageCount: 2,
-                                      totalCount: 5,
-                                      imageRadius: 30,
+                                      totalCount: 10,
+                                      extraCountTextStyle: const TextStyle(
+                                        fontSize: 10,
+                                      ),
                                     ),
                                   ],
                                 ),
