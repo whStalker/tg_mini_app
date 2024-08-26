@@ -9,7 +9,6 @@ class AddMemberPage extends StatefulWidget {
 
 class _AddMemberPageState extends State<AddMemberPage> {
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -32,9 +31,9 @@ class _AddMemberPageState extends State<AddMemberPage> {
                   children: [
                     // User avatar
                     CircleAvatar(),
-      
+
                     SizedBox(width: 20),
-      
+
                     // User name
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

@@ -50,74 +50,74 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
               const SizedBox(height: 20),
 
               // Mark project private or public
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Project status',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  AnimatedToggleSwitch.dual(
-                    current: positive,
-                    first: true,
-                    second: false,
-                    spacing: -20, // toggle width
-                    height: 35,
-                    borderWidth: 2,
-                    onChanged: (i) => setState(() => positive = i),
-                    iconBuilder: (value) => FaIcon(
-                      value ? FontAwesomeIcons.lock : FontAwesomeIcons.lockOpen,
-                      size: 20,
-                    ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     const Text(
+              //       'Project status',
+              //       style: TextStyle(
+              //         fontSize: 18,
+              //         fontWeight: FontWeight.w600,
+              //       ),
+              //     ),
+              //     AnimatedToggleSwitch.dual(
+              //       current: positive,
+              //       first: true,
+              //       second: false,
+              //       spacing: -20, // toggle width
+              //       height: 35,
+              //       borderWidth: 2,
+              //       onChanged: (i) => setState(() => positive = i),
+              //       iconBuilder: (value) => FaIcon(
+              //         value ? FontAwesomeIcons.lock : FontAwesomeIcons.lockOpen,
+              //         size: 20,
+              //       ),
 
-                    style: ToggleStyle(
-                      borderColor: Colors.transparent,
-                      backgroundColor: Colors.grey[300],
-                      indicatorColor: Colors.white,
-                      boxShadow: [
-                        const BoxShadow(
-                          color: Colors.black26,
-                          spreadRadius: 1,
-                          blurRadius: 2,
-                          offset: Offset(0, 1.5),
-                        ),
-                      ],
-                    ),
-                  ),
+              //       style: ToggleStyle(
+              //         borderColor: Colors.transparent,
+              //         backgroundColor: Colors.grey[300],
+              //         indicatorColor: Colors.white,
+              //         boxShadow: [
+              //           const BoxShadow(
+              //             color: Colors.black26,
+              //             spreadRadius: 1,
+              //             blurRadius: 2,
+              //             offset: Offset(0, 1.5),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
 
-                  //   AnimatedToggleSwitch<bool>.dual(
-                  //   current: positive,
-                  //   first: false,
-                  //   second: true,
-                  //   spacing: 50.0,
-                  //   style: const ToggleStyle(
-                  //     borderColor: Colors.transparent,
-                  //     boxShadow: const [
-                  //       BoxShadow(
-                  //         color: Colors.black26,
-                  //         spreadRadius: 1,
-                  //         blurRadius: 2,
-                  //         offset: Offset(0, 1.5),
-                  //       ),
-                  //     ],
-                  //   ),
-                  //   borderWidth: 5.0,
-                  //   height: 55,
-                  //   onChanged: (b) => setState(() => positive = b),
-                  //   styleBuilder: (b) =>
-                  //       ToggleStyle(indicatorColor: b ? Colors.red : Colors.green),
-                  //   iconBuilder: (value) => value
-                  //       ? Icon(Icons.coronavirus_rounded)
-                  //       : Icon(Icons.tag_faces_rounded),
-                  //   textBuilder: (value) => value
-                  //       ? Center(child: Text('Oh no...'))
-                  //       : Center(child: Text('Nice :)')),
-                  // ),
-                ],
-              ),
+              //     //   AnimatedToggleSwitch<bool>.dual(
+              //     //   current: positive,
+              //     //   first: false,
+              //     //   second: true,
+              //     //   spacing: 50.0,
+              //     //   style: const ToggleStyle(
+              //     //     borderColor: Colors.transparent,
+              //     //     boxShadow: const [
+              //     //       BoxShadow(
+              //     //         color: Colors.black26,
+              //     //         spreadRadius: 1,
+              //     //         blurRadius: 2,
+              //     //         offset: Offset(0, 1.5),
+              //     //       ),
+              //     //     ],
+              //     //   ),
+              //     //   borderWidth: 5.0,
+              //     //   height: 55,
+              //     //   onChanged: (b) => setState(() => positive = b),
+              //     //   styleBuilder: (b) =>
+              //     //       ToggleStyle(indicatorColor: b ? Colors.red : Colors.green),
+              //     //   iconBuilder: (value) => value
+              //     //       ? Icon(Icons.coronavirus_rounded)
+              //     //       : Icon(Icons.tag_faces_rounded),
+              //     //   textBuilder: (value) => value
+              //     //       ? Center(child: Text('Oh no...'))
+              //     //       : Center(child: Text('Nice :)')),
+              //     // ),
+              //   ],
+              // ),
             ],
           ),
         ),
