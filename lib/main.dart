@@ -5,7 +5,6 @@ import 'package:tg_mini_app/presentation/add_member_page.dart';
 import 'package:tg_mini_app/presentation/create_project_page.dart';
 import 'package:tg_mini_app/presentation/project_info_page.dart';
 import 'package:tg_mini_app/presentation/task_info_page.dart';
-import 'package:tg_mini_app/presentation/tasks_list_page.dart';
 
 void main() async {
   await TelegramWebApp.instance.expand();
@@ -22,13 +21,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: 
-      // CreateProjectPage(),
-      // TaskInfoPage()
-      // TasksListPage(),
+      home:
+          // CreateProjectPage(),
+          TaskInfoPage(),
       // AddMemberPage(),
       // ProjectInfoPage(),
-      MainPage(),
+      // MainPage(),
     );
   }
 }

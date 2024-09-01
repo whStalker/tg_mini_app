@@ -21,14 +21,13 @@ class UserTasksPage extends StatelessWidget {
               child: Stack(
                 children: [
                   const Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 15),
+                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // Task name
-                        const Text(
+                        Text(
                           'Task title',
                           style: TextStyle(
                             fontSize: 30,
@@ -37,7 +36,7 @@ class UserTasksPage extends StatelessWidget {
                         ),
 
                         // Project name
-                        const Text('Project name'),
+                        Text('Project name'),
 
                         //
                       ],

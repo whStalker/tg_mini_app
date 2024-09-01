@@ -22,7 +22,8 @@ class _AddMemberPageState extends State<AddMemberPage> {
         itemBuilder: (context, index) {
           return const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: Card(
+            child: 
+            Card(
               elevation: 10,
               child: Padding(
                 padding: EdgeInsets.all(15),
@@ -50,11 +51,6 @@ class _AddMemberPageState extends State<AddMemberPage> {
             ),
           );
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        elevation: 10,
-        child: const Icon(Icons.person_add_alt_1),
       ),
     );
   }
