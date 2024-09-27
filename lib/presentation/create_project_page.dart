@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:tg_mini_app/constant/colors_const.dart';
 
 class CreateProjectPage extends StatefulWidget {
   const CreateProjectPage({super.key});
@@ -18,7 +19,7 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: UIcolors.appBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
@@ -28,6 +29,8 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
               TextField(
                 controller: _projectTitleController,
                 decoration: const InputDecoration(
+                  fillColor: UIcolors.textFieldColor,
+                  filled: true,
                   border: OutlineInputBorder(),
                   labelText: 'Enter title',
                 ),
@@ -39,9 +42,12 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
               TextField(
                 controller: _projectDescriptionController,
                 decoration: const InputDecoration(
+                  fillColor: UIcolors.textFieldColor,
+                  filled: true,
                   border: OutlineInputBorder(),
                   labelText: 'Enter description',
                   alignLabelWithHint: true,
+
                 ),
                 maxLines: 3,
               ),
@@ -129,7 +135,7 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
           child: Container(
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: UIcolors.createProjectBtn,
               borderRadius: BorderRadius.circular(15),
             ),
             child: const Text(

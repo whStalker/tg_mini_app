@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tg_mini_app/constant/colors_const.dart';
 
 import 'package:tg_mini_app/presentation/project_info_page.dart';
 
@@ -16,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Colors.white,
+      backgroundColor:  UIcolors.appBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                       // side: const BorderSide(),
                     ),
                     elevation: 20,
-                    color: const Color.fromRGBO(219, 226, 239, 1),
+                    color: UIcolors.projectCardBgColor,
                     child: Padding(
                       padding: const EdgeInsets.all(15),
                       child: Column(
@@ -102,8 +103,8 @@ class _HomePageState extends State<HomePage> {
                                 value: 0.6,
                                 borderRadius: BorderRadius.circular(10),
                                 minHeight: 5,
-                                color: Colors.white70,
-                                backgroundColor: Colors.black12,
+                                color: UIcolors.progressIndicatorColor,
+                                backgroundColor: UIcolors.progressIndicatorBgColor,
                               ),
                               const SizedBox(height: 5),
                               const Align(

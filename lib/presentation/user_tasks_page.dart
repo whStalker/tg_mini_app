@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tg_mini_app/constant/colors_const.dart';
 
 class UserTasksPage extends StatelessWidget {
   const UserTasksPage({super.key});
@@ -6,6 +7,7 @@ class UserTasksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: UIcolors.appBackgroundColor,
       body: ListView.builder(
         itemCount: 8,
         itemBuilder: (context, index) {
@@ -15,7 +17,7 @@ class UserTasksPage extends StatelessWidget {
               height: 130,
               // width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
-                color: Colors.red[300],
+                color: UIcolors.userTaskCard,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Stack(
@@ -32,11 +34,18 @@ class UserTasksPage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.w500,
+                            color: UIcolors.userTaskTitle,
                           ),
                         ),
 
                         // Project name
-                        Text('Project name'),
+                        Text(
+                          'Project name',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: UIcolors.userTaskTitle,
+                          ),
+                        ),
 
                         //
                       ],
@@ -46,7 +55,7 @@ class UserTasksPage extends StatelessWidget {
                     height: 150,
                     width: 20,
                     decoration: const BoxDecoration(
-                      color: Colors.red,
+                      color: UIcolors.createProjectBtn,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(10),
                         bottomLeft: Radius.circular(10),
