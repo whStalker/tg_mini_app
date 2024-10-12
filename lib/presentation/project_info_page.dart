@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_stack/image_stack.dart';
+import 'package:tg_mini_app/constant/colors_const.dart';
 
 import 'package:tg_mini_app/presentation/add_member_page.dart';
 import 'package:tg_mini_app/presentation/create_task_page.dart';
@@ -174,6 +175,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
                         child: Container(
                           height: 130,
                           decoration: BoxDecoration(
+                            color: UIcolors.userTaskCard,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Stack(
@@ -246,6 +248,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
       ),
       floatingActionButton: FloatingActionButton(
         elevation: 10,
+        backgroundColor: UIcolors.navBarColor,
         onPressed: () {
           Navigator.push(
             context,
@@ -254,7 +257,7 @@ class _ProjectInfoPageState extends State<ProjectInfoPage> {
             ),
           );
         },
-        child: const Icon(Icons.playlist_add),
+        child: const Icon(Icons.playlist_add, color: Colors.white,),
       ),
     );
   }

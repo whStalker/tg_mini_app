@@ -11,7 +11,7 @@ TextEditingController _taskTitleController = TextEditingController();
 TextEditingController _taskDescController = TextEditingController();
 
 class _CreateTaskPageState extends State<CreateTaskPage> {
-  int _selectedIdex = -1;
+  int _selectedIndex = -1;
 
   final List<Color?> _colors = [
     Colors.green[200],
@@ -21,7 +21,7 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
 
   void _selectPriority(index) {
     setState(() {
-      _selectedIdex = index;
+      _selectedIndex = index;
     });
   }
 
@@ -146,7 +146,7 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
                             width: double.maxFinite,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
-                              color: _selectedIdex == index
+                              color: _selectedIndex == index
                                   ? _colors[index]
                                   : Colors.transparent,
                             ),
