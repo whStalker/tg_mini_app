@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
 
       if (response.statusCode == 200) {
         final List<dynamic> data = jsonDecode(utf8.decode(response.bodyBytes));
-        debugPrint('data: $data');
+        debugPrint('project data: $data');
 
         return data.map((json) => Project.fromJson(json)).toList();
       } else {
@@ -58,19 +58,20 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: UIcolors.appBackgroundColor,
       body: FutureBuilder(
-          future: _futureProject,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return const Center(child: Text('Something went wrong'));
-            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return const Center(child: Text('No data'));
-            }
+        future: _futureProject,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return const Center(child: Text('Something went wrong'));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text('No data'));
+          }
 
-            final objectData = snapshot.data!;
+          final objectData = snapshot.data!;
 
-            return Column(
+          return SingleChildScrollView(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // const Padding(
@@ -100,7 +101,9 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ProjectInfoPage(),
+                            builder: (context) => ProjectInfoPage(
+                              projectData: object,
+                            ),
                           ),
                         );
                       },
@@ -174,8 +177,10 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
               ],
-            );
-          }),
+            ),
+          );
+        },
+      ),
     );
   }
 }

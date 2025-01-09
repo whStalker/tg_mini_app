@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -36,6 +38,17 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
 
   Future<void> createProject(
       String projectTitle, String projectDescription) async {
+    // Показываем диалог загрузки
+    showDialog(
+      context: context,
+      barrierDismissible: false, // Запрещаем закрытие диалога
+      builder: (BuildContext context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
     final url = Uri.parse('http://localhost:8000/api/v1/project/');
 
     final header = {
@@ -49,6 +62,7 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
       "description": projectDescription,
       "is_public": true,
     });
+
     try {
       final response = await http.post(
         url,
@@ -56,15 +70,28 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
         body: body,
       );
 
+      Navigator.pop(context); // Закрываем диалог загрузки
+
       if (response.statusCode == 201) {
         debugPrint('Project created successfully');
         _projectTitleController.clear();
         _projectDescriptionController.clear();
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Project created successfully')),
+        );
       } else {
         throw Exception('Failed to create project: ${response.reasonPhrase}');
       }
     } catch (err) {
-      throw Exception('Error has occured: $err');
+      Navigator.pop(context); // Закрываем диалог загрузки при ошибке
+
+      // Показываем сообщение об ошибке
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error has occurred: $err')),
+      );
+
+      // throw Exception('Error has occured: $err');
     }
   }
 
