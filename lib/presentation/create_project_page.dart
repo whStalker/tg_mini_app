@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tg_mini_app/constant/colors_const.dart';
 
@@ -9,18 +13,66 @@ class CreateProjectPage extends StatefulWidget {
   State<CreateProjectPage> createState() => _CreateProjectPageState();
 }
 
-TextEditingController _projectTitleController = TextEditingController();
-TextEditingController _projectDescriptionController = TextEditingController();
-
 int value = 0;
 bool positive = false;
 
 class _CreateProjectPageState extends State<CreateProjectPage> {
+  final TextEditingController _projectTitleController = TextEditingController();
+  final TextEditingController _projectDescriptionController =
+      TextEditingController();
+
+  final FocusNode _titleFocusNode = FocusNode();
+  final FocusNode _descriptionFocusNode = FocusNode();
+
+  @override
+  void dispose() {
+    // Освобождаем ресурсы после использования
+    _projectTitleController.dispose();
+    _projectDescriptionController.dispose();
+    _titleFocusNode.dispose();
+    _descriptionFocusNode.dispose();
+    super.dispose();
+  }
+
+  Future<void> createProject(
+      String projectTitle, String projectDescription) async {
+    final url = Uri.parse('http://localhost:8000/api/v1/project/');
+
+    final header = {
+      "Content-Type": "application/json",
+      "X-User":
+          "query_id=AAGidl0XAAAAAKJ2XRc_c0l3&user=%7B%22id%22%3A392001186%2C%22first_name%22%3A%22%24%24%24%24%24%24%24%24%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22Wicked_Heaven%22%2C%22language_code%22%3A%22ru%22%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FhFUFITh51vMU1fnse245ZpoMiiPxSttywVgHmfvToIM.svg%22%7D&auth_date=1731945334&signature=Bkvjr3IG-K0_2xGiQdPqRdqXkGrvIP1lTi2QqnZGJtiORn7jWHf5eVECRmcNXFMsZoAhWNIGt2Pe8qK04tEcAw&hash=141298c2c9e7ed7aefc143afebf80ac444448ce17687da648c29458615743a78",
+    };
+
+    final body = jsonEncode({
+      "name": projectTitle,
+      "description": projectDescription,
+      "is_public": true,
+    });
+    try {
+      final response = await http.post(
+        url,
+        headers: header,
+        body: body,
+      );
+
+      if (response.statusCode == 201) {
+        debugPrint('Project created successfully');
+        _projectTitleController.clear();
+        _projectDescriptionController.clear();
+      } else {
+        throw Exception('Failed to create project: ${response.reasonPhrase}');
+      }
+    } catch (err) {
+      throw Exception('Error has occured: $err');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: UIcolors.appBackgroundColor,
-      body: const Padding(
+      body: Padding(
         padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
@@ -29,7 +81,9 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
               Card(
                 elevation: 5,
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: _projectTitleController,
+                  focusNode: _titleFocusNode,
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Enter title',
                   ),
@@ -42,7 +96,9 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
               Card(
                 elevation: 5,
                 child: TextField(
-                  decoration: InputDecoration(
+                  controller: _projectDescriptionController,
+                  focusNode: _descriptionFocusNode,
+                  decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Enter description',
                   ),
@@ -54,7 +110,10 @@ class _CreateProjectPageState extends State<CreateProjectPage> {
         ),
       ),
       bottomNavigationBar: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          createProject(
+              _projectTitleController.text, _projectDescriptionController.text);
+        },
         child: Padding(
           padding:
               const EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 100),
