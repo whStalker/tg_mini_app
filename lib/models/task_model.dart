@@ -127,4 +127,28 @@ class TaskModel {
       endAt: DateTime.parse(json['end_at']),
     );
   }
+
+  Map<String, dynamic> toPartialJson({
+    String? name,
+    String? description,
+    int? project,
+    User? taskCreator,
+    User? taskImplementer,
+    Status? status,
+    Priority? priority,
+    DateTime? endAt,
+  }){
+    final Map<String, dynamic> updatedData = {};
+
+    if (name != null) updatedData['name'] = name;
+    if (description != null) updatedData['description'] = description; 
+    if (project != null) updatedData['project'] = project;
+    if (taskCreator != null) updatedData['creator_mapped'] = taskCreator.id;
+    if (taskImplementer != null) updatedData['implementer_mapped'] = taskImplementer.id;
+    if (status != null) updatedData['status_mapped'] = status.id;
+    if (priority != null) updatedData['priority_mapped'] = priority.id;
+    if (endAt != null) updatedData['end_at'] = endAt.toIso8601String();
+
+    return updatedData;
+  }
 }
